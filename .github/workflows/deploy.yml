@@ -1,0 +1,16 @@
+name: GitHub Pages Deploy
+
+on:
+    push:
+        paths:
+            - 'index.html'
+jobs:
+    deploy:
+        environment:
+            name: github-pages
+            url: ${{steps.deployment.outputs.page_url}}
+        runs-on: ubuntu-latest
+        steps:
+            - name: Deploy GitHub Pages
+              id: deployement
+              uses: action/deploy-pages@v4
