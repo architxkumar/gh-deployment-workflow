@@ -1,17 +1,20 @@
 name: GitHub Pages Deploy
-uses: actions/upload-pages-artifact@v4
 
 on:
     push:
         paths:
             - 'index.html'
 jobs:
-    deploy:
+    deploy: 
         environment:
             name: github-pages
             url: ${{steps.deployment.outputs.page_url}}
         runs-on: ubuntu-latest
         steps:
-            - name: Deploy GitHub Pages
-              id: deployement
-              uses: action/deploy-pages@v4
+          - name: Checkout
+            uses: actions/checkout@v5
+          - name: Setup Pages
+            uses: actions/configure-pages@v5
+          - name: Deploy to GitHub Pages
+            id: deployment
+            uses: actions/deploy-pages@v4
