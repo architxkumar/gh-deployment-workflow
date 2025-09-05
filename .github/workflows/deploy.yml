@@ -1,4 +1,5 @@
 name: GitHub Pages Deploy
+uses: actions/upload-pages-artifact@v4
 
 on:
     push:
